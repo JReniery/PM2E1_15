@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Convertidor="clr-namespace:PM02_1P.Convertidor"
+             x:Class="PM02_1P.ListPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Convertidor:ByteArrayToImage x:Key="ByteToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ListView  x:Name="lvSitesList" ItemTapped="LvSitesList_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnVerMap_Clicked"
+                                      CommandParameter="{Binding .}"
+                                      Text="Ver Mapa" />
+                            <MenuItem Clicked="OnDelete_Clicked"
+                                      CommandParameter="{Binding .}"
+                                      Text="Eliminar" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+
+                        <Frame Padding="1"
+                               CornerRadius="5"
+                               IsClippedToBounds="False">
+                            <Grid HeightRequest="100">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".3*" />
+                                    <ColumnDefinition Width=".8*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height=".5*" />
+                                    <RowDefinition Height=".5*" />
+                                </Grid.RowDefinitions>
+                                
+                                <Image Grid.RowSpan="2" Source="{Binding Photo, Converter={StaticResource ByteToImage}}" />
+                                
+                                <Label Grid.Column="1"
+                                       FontAttributes="Bold"
+                                       FontSize="Subtitle"
+                                       Text="{Binding Descrip}"
+                                       VerticalOptions="Center" />
+                                <Label
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       FontSize="Body"
+                                       Text="{Binding Lat}" />
+                                <Label
+                                       Grid.Row="1"
+                                       Grid.Column="2"
+                                       FontSize="Body"
+                                       Text="{Binding Lon}" />
+                            </Grid>
+                        </Frame>                       
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

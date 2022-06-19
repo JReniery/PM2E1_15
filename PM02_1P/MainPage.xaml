@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="PM02_1P.MainPage">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20">
+            <Image Source="logoUTH.jpg" HeightRequest="50" />
+            <Label Text="SITE VISITOR APP" FontSize="Subtitle" Margin="10,10"/>
+        </StackLayout>       
+        <Label Text="IMAGEN DEL SITIO VISITADO" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+        <ImageButton Source="imgCamDefault.png" 
+                     HeightRequest="200"
+                     Aspect="AspectFit"
+                     x:Name="imgPhoto" 
+                     Clicked="imgPhoto_Clicked"/>        
+
+        <!-- <ic1:CircleImage 
+            VerticalOptions="Center"
+            x:Name="imgPhoto"
+            HeightRequest="200"            
+            Aspect="AspectFit"
+            Source="https://aka.ms/campus.jpg">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="imgPhoto_Clicked" />
+            </Image.GestureRecognizers>
+        </ic1:CircleImage> -->
+
+        <Label Text="Latitude" Margin="20,10,0,0"/>
+        <Entry IsReadOnly="True" x:Name="txbLat" Margin="20,0,20,0"/>
+        
+        <Label Text="Longitud" Margin="20,10,0,0"/>
+        <Entry IsReadOnly="True" x:Name="txbLon" Margin="20,0,20,0"/>
+        
+        <Label Text="Descripción" Margin="20,10,0,0"/>
+        <Editor AutoSize="TextChanges" x:Name="edtDescrip" MaxLength="100" Margin="20,0,0,0" />
+        
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Agregar" Padding="20,0" x:Name="btnAdd" Clicked="btnAdd_Clicked"/>
+            <Button Text="Lista Sitios" x:Name="btnList" Clicked="btnList_Clicked"/>
+        </StackLayout>
+        <Button Text="Salir App" HorizontalOptions="Center" Padding="20,0" x:Name="btnExit" Clicked="btnExit_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
